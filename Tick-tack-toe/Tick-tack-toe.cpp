@@ -19,21 +19,21 @@ void drawingPlayingField(char arr[FIELD_SIZE][FIELD_SIZE])
 
 }
 
-bool winCheck(char arr[FIELD_SIZE][FIELD_SIZE], int count)
+bool winCheck(char arr[FIELD_SIZE][FIELD_SIZE], int count, char symb)
 {
 
 	if (count < 5) { return false; }	
 
-	if (arr[0][0] == arr[0][1] && arr[0][0] == arr[0][2]) { return true; }
-	if (arr[1][0] == arr[1][1] && arr[1][0] == arr[1][2]) { return true; }
-	if (arr[2][0] == arr[2][1] && arr[2][0] == arr[2][2]) { return true; }
+	if (arr[0][0] == symb && arr[0][0] == arr[0][1] && arr[0][0] == arr[0][2]) { return true; }
+	if (arr[1][0] == symb && arr[1][0] == arr[1][1] && arr[1][0] == arr[1][2]) { return true; }
+	if (arr[2][0] == symb && arr[2][0] == arr[2][1] && arr[2][0] == arr[2][2]) { return true; }
 
-	if (arr[0][0] == arr[1][0] && arr[0][0] == arr[2][0]) { return true; }
-	if (arr[0][1] == arr[1][1] && arr[0][1] == arr[2][1]) { return true; }
-	if (arr[0][2] == arr[1][2] && arr[0][2] == arr[2][2]) { return true; }
+	if (arr[0][0] == symb && arr[0][0] == arr[1][0] && arr[0][0] == arr[2][0]) { return true; }
+	if (arr[0][1] == symb && arr[0][1] == arr[1][1] && arr[0][1] == arr[2][1]) { return true; }
+	if (arr[0][2] == symb && arr[0][2] == arr[1][2] && arr[0][2] == arr[2][2]) { return true; }
 
-	if (arr[0][0] == arr[1][1] && arr[0][0] == arr[2][2]) { return true; }
-	if (arr[2][0] == arr[1][1] && arr[2][0] == arr[0][2]) { return true; }
+	if (arr[0][0] == symb && arr[0][0] == arr[1][1] && arr[0][0] == arr[2][2]) { return true; }
+	if (arr[2][0] == symb && arr[2][0] == arr[1][1] && arr[2][0] == arr[0][2]) { return true; }
 
 	return false;
 
@@ -148,7 +148,7 @@ int main()
 		++count;
 		drawingPlayingField(playingField);
 
-		if (winCheck(playingField, count))
+		if (winCheck(playingField, count, 'x'))
 		{
 			std::cout << "\n\n****************************************************\n";
 			std::cout << "\t\t" << player_1 << " wins!\n\t\tGame over!\n";
@@ -178,7 +178,7 @@ int main()
 
 		++count;
 
-		if (winCheck(playingField, count))
+		if (winCheck(playingField, count, 'o'))
 		{
 			std::cout << "\n\n****************************************************\n";
 			std::cout << "\t\t" << player_2 << " wins!\n\t\tGame over!\n";
@@ -189,6 +189,5 @@ int main()
 
 		Sleep(500);
 	}
-
 	
 }
